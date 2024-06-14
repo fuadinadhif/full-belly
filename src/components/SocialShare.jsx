@@ -9,8 +9,6 @@ import {
   FaCopy,
 } from "react-icons/fa6";
 
-import { EntryContext } from "@/context/EntryContext";
-
 export default function SocialShare({ text, size }) {
   const url = window.location.href;
   return (
