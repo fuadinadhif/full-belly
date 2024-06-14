@@ -1,6 +1,6 @@
-import RecipeCard from "@/components/RecipeCard";
-
 import { contentfulClient } from "@/helpers/contentful-client";
+
+import RecipeCard from "@/components/RecipeCard";
 
 async function getRecipes() {
   try {

@@ -4,6 +4,7 @@ import Menu from "@/components/Menu";
 export default function Header({ className }) {
   return (
     <header className={className}>
+      {/* Large screen header */}
       <div className="hidden xl:block">
         <div>
           <Logo className={"text-center text-7xl"} />
@@ -15,10 +16,14 @@ export default function Header({ className }) {
         </div>
         <Menu className="mt-8 flex items-center justify-center gap-4" />
       </div>
+
+      {/* Medium screen header */}
       <div className="hidden items-center justify-between md:flex xl:hidden">
         <Logo className="text-3xl" />
         <Menu className="flex items-center justify-center gap-4" />
       </div>
+
+      {/* Small screen header */}
       <div className="flex justify-between md:hidden">
         <Logo className="text-3xl" />
         <button class="flex items-center rounded border-2 border-black px-3 py-2">
