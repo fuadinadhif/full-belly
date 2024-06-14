@@ -11,8 +11,8 @@ export default function Menu({ className }) {
             ["🏠", "/"],
             ["Kitchen Tips", "#"],
             ["Cuisines", "#"],
-          ].map((menu) => (
-            <li>
+          ].map((menu, index) => (
+            <li key={index}>
               <Link
                 href={menu[1]}
                 className="rounded-full border-2 border-black px-6 py-2 dark:border-white"
