@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import Link from "next/link";
 
 import Logo from "@/components/Logo";
 import Menu from "@/components/Menu";
