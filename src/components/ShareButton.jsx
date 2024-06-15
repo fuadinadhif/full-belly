@@ -23,19 +23,19 @@ export default function ShareButton({ text, size }) {
         </li>
         {[
           [
-            <FaSquareXTwitter size={size} />,
+            <FaSquareXTwitter size={size} key={1} />,
             `https://x.com/intent/tweet?text=${text}&url=${url}`,
           ],
           [
-            <FaSquareFacebook size={size} />,
+            <FaSquareFacebook size={size} key={2} />,
             `https://www.facebook.com/sharer/sharer.php?u=${url}`,
           ],
           [
-            <FaSquareWhatsapp size={size} />,
+            <FaSquareWhatsapp size={size} key={3} />,
             `https://api.whatsapp.com/send?text=${text}%20${url}`,
           ],
           [
-            <FaTelegram size={size} />,
+            <FaTelegram size={size} key={4} />,
             `https://t.me/share/url?url=${url}&text=${text}`,
           ],
         ].map((social, index) => (
