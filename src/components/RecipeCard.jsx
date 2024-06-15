@@ -18,10 +18,10 @@ export default function RecipeCard({ recipe }) {
       </div>
       <div className="mt-6">
         <h3 className="text-xl font-bold">{title}</h3>
-        <p className="mb-6">⌛ {cookingTime} minutes to make</p>
+        <p className="mb-4">⌛ {cookingTime} minutes to make</p>
         <Link
           href={`/recipes/${id}`}
-          className="border-2 border-black px-6 py-3 dark:border-white"
+          className="block w-fit border-2 border-black px-6 py-3 dark:border-white"
         >
           Cook this
         </Link>

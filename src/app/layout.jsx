@@ -22,14 +22,14 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className={theme}>
       <body
-        className={`${inter.className} transition-colors duration-200 dark:bg-neutral-950 dark:text-white`}
+        className={`${inter.className} flex min-h-screen flex-col transition-colors duration-200 dark:bg-neutral-950 dark:text-white`}
       >
-        <Header className="mx-auto max-w-screen-xl p-6" />
-        <main className="mx-auto max-w-screen-xl p-6">
+        <Header className="mx-auto w-full max-w-screen-xl p-6 xl:pt-12" />
+        <main className="mx-auto max-w-screen-xl p-6 pb-12">
           {children}
           <SpeedInsights />
         </main>
-        <Footer />
+        <Footer className="mt-auto" />
       </body>
     </html>
   );

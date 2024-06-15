@@ -16,7 +16,7 @@ export default async function Home() {
   const recipes = await getRecipes();
 
   return (
-    <section className="flex flex-wrap gap-8 gap-y-20">
+    <section className="flex flex-wrap gap-8 gap-y-16">
       {recipes.map((recipe) => {
         return <RecipeCard key={recipe.sys.id} recipe={recipe} />;
       })}
