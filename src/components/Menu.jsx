@@ -1,8 +1,11 @@
 import Link from "next/link";
 
 import ThemeToggle from "@/components/ThemeToggle";
+import { getThemeCookies } from "@/helpers/theme-cookies";
 
-export default function Menu({ className }) {
+export default async function Menu({ className }) {
+  const theme = await getThemeCookies();
+
   return (
     <div className={className}>
       <nav>
@@ -23,7 +26,7 @@ export default function Menu({ className }) {
           ))}
         </ul>
       </nav>
-      <ThemeToggle />
+      <ThemeToggle theme={theme} />
     </div>
   );
 }

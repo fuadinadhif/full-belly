@@ -26,9 +26,9 @@ export default function Header({ className }) {
       {/* Small screen header */}
       <div className="flex justify-between md:hidden">
         <Logo className="text-3xl" />
-        <button class="flex items-center rounded border-2 border-black px-3 py-2">
+        <button className="flex items-center rounded border-2 border-black px-3 py-2">
           <svg
-            class="h-3 w-3 fill-current"
+            className="h-3 w-3 fill-current"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
