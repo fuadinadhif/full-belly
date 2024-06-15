@@ -1,25 +1,21 @@
-"use client";
-
+import { headers } from "next/headers";
 import Link from "next/link";
 import {
   FaSquareXTwitter,
   FaSquareFacebook,
   FaSquareWhatsapp,
   FaTelegram,
-  FaCopy,
 } from "react-icons/fa6";
+import CopyURLButton from "./CopyURLButton";
 
 export default function ShareButton({ text, size }) {
-  const url = window.location.href;
+  const headersList = headers();
+  const url = headersList.get("referer");
   return (
     <div>
       <ul className="flex gap-4">
         <li>
-          <FaCopy
-            className="cursor-pointer"
-            onClick={() => navigator.clipboard.writeText(url)}
-            size={size}
-          />
+          <CopyURLButton size={size} url={url} />
         </li>
         {[
           [

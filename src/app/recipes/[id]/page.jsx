@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import { headers } from "next/headers";
 
 import { contentfulClient } from "@/helpers/contentful-client";
 import ShareButton from "@/components/ShareButton";
@@ -15,12 +16,28 @@ async function getRecipe(id) {
   }
 }
 
-export async function generateMetadata({ params }) {
-  const recipe = await getRecipe(params.id);
-  const { title, description } = recipe.fields;
+export async function generateMetadata(params) {
+  const headersList = headers();
+  const referer = headersList.get("referer");
+  const recipe = await getRecipe(params.params.id);
+  const { title, description, featuredImage } = recipe.fields;
+
   return {
     title,
     description,
+    openGraph: {
+      title,
+      description,
+      url: referer,
+      siteName: "FullBelly",
+      images: [
+        {
+          url: `https:${featuredImage.fields.file.url}`,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
+    },
   };
 }
 
