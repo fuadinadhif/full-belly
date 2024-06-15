@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 import { getThemeCookies } from "@/helpers/theme-cookies";
@@ -24,7 +25,10 @@ export default async function RootLayout({ children }) {
         className={`${inter.className} transition-colors duration-200 dark:bg-neutral-950 dark:text-white`}
       >
         <Header className="mx-auto max-w-screen-xl p-6" />
-        <main className="mx-auto max-w-screen-xl p-6">{children}</main>
+        <main className="mx-auto max-w-screen-xl p-6">
+          {children}
+          <SpeedInsights />
+        </main>
         <Footer />
       </body>
     </html>
