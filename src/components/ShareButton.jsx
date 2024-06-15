@@ -9,7 +9,7 @@ import {
   FaCopy,
 } from "react-icons/fa6";
 
-export default function SocialShare({ text, size }) {
+export default function ShareButton({ text, size }) {
   const url = window.location.href;
   return (
     <div>

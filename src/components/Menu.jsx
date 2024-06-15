@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import ThemeToggle from "@/components/ThemeToggle";
+import ThemeButton from "@/components/ThemeButton";
 import { getThemeCookies } from "@/helpers/theme-cookies";
 
 export default async function Menu({ className }) {
@@ -26,7 +26,7 @@ export default async function Menu({ className }) {
           ))}
         </ul>
       </nav>
-      <ThemeToggle theme={theme} />
+      <ThemeButton theme={theme} />
     </div>
   );
 }

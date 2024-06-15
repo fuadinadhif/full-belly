@@ -3,7 +3,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 
 import { contentfulClient } from "@/helpers/contentful-client";
-import SocialShare from "@/components/SocialShare";
+import ShareButton from "@/components/ShareButton";
 
 async function getRecipe(id) {
   try {
@@ -61,7 +61,7 @@ export default async function Page({ params }) {
         <div className="mt-12">
           <div className="flex items-center justify-between">
             <h3 className="text-4xl font-extrabold">{title}</h3>
-            <SocialShare text="Come get this!" size={25} />
+            <ShareButton text="Come get this!" size={25} />
           </div>
           <p className="mt-4 font-semibold">⌛ {cookingTime} minutes to make</p>
           <p className="mt-2">{description}</p>
