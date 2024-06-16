@@ -6,6 +6,15 @@ import { headers } from "next/headers";
 import { contentfulClient } from "@/helpers/contentful-client";
 import ShareButton from "@/components/ShareButton";
 
+export async function generateStaticParams() {
+  const client = contentfulClient();
+  const res = await client.getEntries({ content_type: "recipe" });
+
+  return res.items.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
 async function getRecipe(slug) {
   try {
     const client = contentfulClient();
@@ -54,7 +63,6 @@ export default async function Page({ params }) {
     method,
     featuredImage,
   } = recipe.fields;
-
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
@@ -65,7 +73,6 @@ export default async function Page({ params }) {
       ),
     },
   };
-
   return (
     <section className="mx-auto max-w-4xl">
       <div className="h-80">
