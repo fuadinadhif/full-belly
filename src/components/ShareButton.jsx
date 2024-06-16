@@ -6,7 +6,7 @@ import {
   FaSquareWhatsapp,
   FaTelegram,
 } from "react-icons/fa6";
-import CopyURLButton from "./CopyURLButton";
+import Clipboard from "./ShareButtonClipboard";
 
 export default function ShareButton({ text, size }) {
   const headersList = headers();
@@ -16,7 +16,7 @@ export default function ShareButton({ text, size }) {
     <div>
       <ul className="flex gap-4">
         <li>
-          <CopyURLButton size={size} url={url} />
+          <Clipboard size={size} url={url} />
         </li>
         {[
           [
