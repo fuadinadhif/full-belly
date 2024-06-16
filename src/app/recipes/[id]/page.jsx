@@ -17,10 +17,10 @@ async function getRecipe(id) {
 }
 
 export async function generateMetadata(params) {
-  const headersList = headers();
-  const referer = headersList.get("referer");
   const recipe = await getRecipe(params.params.id);
   const { title, description, featuredImage } = recipe.fields;
+  const headersList = headers();
+  const url = headersList.get("x-url") || "";
 
   return {
     title,
@@ -28,7 +28,7 @@ export async function generateMetadata(params) {
     openGraph: {
       title,
       description,
-      url: referer,
+      url,
       siteName: "FullBelly",
       images: [
         {

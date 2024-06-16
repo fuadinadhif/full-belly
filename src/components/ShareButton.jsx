@@ -10,7 +10,8 @@ import CopyURLButton from "./CopyURLButton";
 
 export default function ShareButton({ text, size }) {
   const headersList = headers();
-  const url = headersList.get("referer");
+  const url = headersList.get("x-url") || "";
+
   return (
     <div>
       <ul className="flex gap-4">
