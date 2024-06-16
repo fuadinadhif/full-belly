@@ -6,18 +6,21 @@ import { headers } from "next/headers";
 import { contentfulClient } from "@/helpers/contentful-client";
 import ShareButton from "@/components/ShareButton";
 
-async function getRecipe(id) {
+async function getRecipe(slug) {
   try {
     const client = contentfulClient();
-    const res = await client.getEntry(id);
-    return res;
+    const res = await client.getEntries({
+      content_type: "recipe",
+      "fields.slug": slug,
+    });
+    return res.items[0];
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function generateMetadata(params) {
-  const recipe = await getRecipe(params.params.id);
+export async function generateMetadata({ params }) {
+  const recipe = await getRecipe(params.slug);
   const { title, description, featuredImage } = recipe.fields;
   const headersList = headers();
   const url = headersList.get("x-url") || "";
@@ -42,7 +45,7 @@ export async function generateMetadata(params) {
 }
 
 export default async function Page({ params }) {
-  const recipe = await getRecipe(params.id);
+  const recipe = await getRecipe(params.slug);
   const {
     title,
     description,

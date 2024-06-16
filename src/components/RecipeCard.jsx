@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function RecipeCard({ recipe }) {
-  const { title, cookingTime, thumbnail } = recipe.fields;
-  const id = recipe.sys.id;
+  const { title, cookingTime, slug, thumbnail } = recipe.fields;
 
   return (
     <article className="min-w-[270px] flex-1">
@@ -20,7 +19,7 @@ export default function RecipeCard({ recipe }) {
         <h3 className="text-xl font-bold">{title}</h3>
         <p className="mb-4">⌛ {cookingTime} minutes to make</p>
         <Link
-          href={`/recipes/${id}`}
+          href={`/recipes/${slug}`}
           className="block w-fit border-2 border-black px-6 py-3 dark:border-white"
         >
           Cook this
