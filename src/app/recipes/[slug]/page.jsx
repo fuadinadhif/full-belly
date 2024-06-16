@@ -50,6 +50,15 @@ export async function generateMetadata({ params }) {
       locale: "en_US",
       type: "article",
     },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
   };
 }
 
