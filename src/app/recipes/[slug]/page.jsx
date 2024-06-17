@@ -6,34 +6,13 @@ import { headers } from "next/headers";
 import { contentfulClient } from "@/helpers/contentful-client";
 import ShareButton from "@/components/ShareButton";
 
-export async function generateStaticParams() {
-  const client = contentfulClient();
-  const res = await client.getEntries({ content_type: "recipe" });
-
-  return res.items.map((item) => ({
-    slug: item.slug,
-  }));
-}
-
-async function getRecipe(slug) {
-  try {
-    const client = contentfulClient();
-    const res = await client.getEntries({
-      content_type: "recipe",
-      "fields.slug": slug,
-    });
-    return res.items[0];
-  } catch (error) {
-    console.error(error);
-  }
-}
+const client = contentfulClient();
 
 export async function generateMetadata({ params }) {
   const recipe = await getRecipe(params.slug);
   const { title, description, featuredImage } = recipe.fields;
   const headersList = headers();
   const url = headersList.get("x-url") || "";
-
   return {
     title,
     description,
@@ -60,6 +39,32 @@ export async function generateMetadata({ params }) {
       },
     },
   };
+}
+
+export async function generateStaticParams() {
+  try {
+    const response = await client.getEntries({
+      content_type: "recipe",
+    });
+
+    return response?.items.map((item) => ({
+      slug: item.fields.slug,
+    }));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getRecipe(slug) {
+  try {
+    const response = await client.getEntries({
+      content_type: "recipe",
+      "fields.slug": slug,
+    });
+    return response.items[0];
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export default async function Page({ params }) {
